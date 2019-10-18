@@ -17,11 +17,12 @@ router.get('/', (req, res)=>{
         }
     })
 });
-
+//create route
 router.get('/new', (req, res) => {
     res.render('new.ejs');
 });
 
+//post route
 router.post('/', (req, res) =>{
     Movie.create(req.body, (err, createdMovie) => {
         if (err) {
@@ -32,6 +33,18 @@ router.post('/', (req, res) =>{
     })
 });
 
+//show route
+router.get('/:id', (req, res) => {
+    Movie.findById(req.params.id, (err, foundMovie) => {
+        if (err) {
+            res.send(err);
+        } else {
+            res.render('show.ejs', {
+                movie: foundMovie
+            });
+        }
+    })
+});
 
 
 module.exports = router;
