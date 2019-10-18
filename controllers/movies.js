@@ -1,11 +1,21 @@
 const express = require('express');
 const router = express.Router();
-const db = ('./db/db.js')
-
+const Movie = require('../models/movies.js')
 
 //routes
+
+//index route
 router.get('/', (req, res)=>{
-    res.render('index.ejs');
+    Movie.find({}, (err, foundMovies) => {
+        if (err) {
+            res.send(err);
+        } else {
+            res.render('index.ejs', {
+                movies: foundMovies
+            });
+
+        }
+    })
 });
 
 router.get('/new', (req, res) => {
@@ -13,7 +23,13 @@ router.get('/new', (req, res) => {
 });
 
 router.post('/', (req, res) =>{
-    res.redirect('/movies')
+    Movie.create(req.body, (err, createdMovie) => {
+        if (err) {
+            res.send(err);
+        } else {
+            res.redirect('/movies');
+        }
+    })
 });
 
 

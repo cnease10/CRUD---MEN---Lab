@@ -7,6 +7,14 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Yo</h1>
+    <h1>Movies</h1>
+        <ul>
+            <%for (let i = 0; i < movies.length; i++) { %>
+                <li>
+                    Title: <%=movies[i].title%> <br>
+                    Year: <%=movies[i].year%> <br>
+                </li>
+           <% } %>
+        </ul>
 </body>
 </html>
