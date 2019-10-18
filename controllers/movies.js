@@ -11,6 +11,9 @@ router.get('/new', (req, res) => {
     res.render('new.ejs');
 });
 
+// router.post('/', (req, res) =>{
+
+// });
 
 
 module.exports = router;
