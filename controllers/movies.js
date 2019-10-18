@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const db = ('./db/db.js')
 
 
 //routes
@@ -12,7 +13,7 @@ router.get('/new', (req, res) => {
 });
 
 router.post('/', (req, res) =>{
-res.redirect('/movies')
+    res.redirect('/movies')
 });
 
 
