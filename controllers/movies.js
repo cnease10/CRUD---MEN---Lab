@@ -57,6 +57,35 @@ router.delete('/:id', (req, res) => {
     })
 })
 
+//edit route
+router.get('/:id/edit', (req, res) => {
+    Movie.findById(req.params.id, (err, foundMovie) => {
+        if (err) {
+            res.send(err);
+        } else {
+            res.render('edit.ejs', {
+                movie: foundMovie
+            });
+        }
+    })
+})
+
+//put route
+router.put('/:id', (req, res)=>{
+    Movie.findByIdAndUpdate(
+        req.params.id,
+        req.body,
+        {new: true},
+        (err, updatedMovie) =>{
+            
+            if(err){
+                res.send(err);
+            } else {
+                res.redirect('/movies');
+            }
+        }
+    );
+});
 
 
 module.exports = router;

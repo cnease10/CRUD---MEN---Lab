@@ -17,6 +17,7 @@
                     <form action="/movies/<%=movies[i].id%>?_method=DELETE" method="POST">
                         <button>DESTROY</button>
                     </form>
+                        <a href="/movies/<%=movies[i].id%>/edit"><button>EDIT MOVIE</button></a>
                 </li>
            <% } %>
         </ul>
